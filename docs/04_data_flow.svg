@@ -7,200 +7,156 @@
     <filter id="d4"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity=".42"/></filter>
     <filter id="g4"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <marker id="r1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#4facfe"/></marker>
+    <marker id="r3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#ffd700"/></marker>
   </defs>
 
   <rect width="1020" height="700" fill="url(#bg4)" rx="18"/>
 
-  <text x="510" y="42" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" letter-spacing="1" filter="url(#g4)">Data Flow &amp; Object Lifecycle</text>
-  <text x="510" y="66" text-anchor="middle" fill="#667" font-size="13">How application objects are created, stored, queried, mutated, and deleted</text>
+  <text x="510" y="42" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" letter-spacing="1" filter="url(#g4)">Data Flow &amp; Persistence Lifecycle</text>
+  <text x="510" y="66" text-anchor="middle" fill="#667" font-size="13">How application objects move between RAM (ArrayList) and Disk (CSV)</text>
+
+  <!-- ═══════ PHASE 0: STARTUP ═══════ -->
+  <g transform="translate(30,90)" filter="url(#d4)">
+    <rect width="460" height="135" rx="14" fill="#12122a" stroke="#ffd700" stroke-width="2"/>
+    <rect width="460" height="30" rx="14" fill="#ffd700" opacity=".1"/>
+    <text x="22" y="21" fill="#ffd700" font-size="13" font-weight="700">⓪  STARTUP — loadFromFile()</text>
+    <line x1="14" y1="35" x2="446" y2="35" stroke="#ffd700" opacity=".2"/>
+
+    <g transform="translate(16,46)">
+      <rect width="200" height="76" rx="8" fill="#ffd700" opacity=".06" stroke="#ffd700" stroke-width=".8"/>
+      <text x="10" y="16" fill="#ffd700" font-size="10" font-weight="600">Read data.csv</text>
+      <text x="10" y="34" fill="#aab" font-size="10">Skip header line</text>
+      <text x="10" y="48" fill="#aab" font-size="10">Split by comma (ignoring quotes)</text>
+      <text x="10" y="62" fill="#aab" font-size="10">Parse integers, doubles, enums</text>
+    </g>
+
+    <text x="230" y="86" fill="#ffd700" font-size="16">→</text>
+
+    <g transform="translate(248,46)">
+      <rect width="200" height="76" rx="8" fill="#ffd700" opacity=".06" stroke="#ffd700" stroke-width=".8"/>
+      <text x="10" y="16" fill="#ffd700" font-size="10" font-weight="600">Reconstruct State</text>
+      <text x="10" y="34" fill="#ffa" font-size="10" font-family="Consolas,monospace">new InternshipApplication(...)</text>
+      <text x="10" y="48" fill="#ffa" font-size="10" font-family="Consolas,monospace">applications.add(app)</text>
+      <text x="10" y="62" fill="#ffa" font-size="10" font-family="Consolas,monospace">nextId = max(existing) + 1</text>
+    </g>
+  </g>
 
   <!-- ═══════ PHASE 1: CREATION ═══════ -->
-  <g transform="translate(30,90)" filter="url(#d4)">
-    <rect width="460" height="220" rx="14" fill="#12122a" stroke="#43e97b" stroke-width="2"/>
+  <g transform="translate(30,240)" filter="url(#d4)">
+    <rect width="460" height="135" rx="14" fill="#12122a" stroke="#43e97b" stroke-width="2"/>
     <rect width="460" height="30" rx="14" fill="#43e97b" opacity=".1"/>
     <text x="22" y="21" fill="#43e97b" font-size="13" font-weight="700">①  CREATE — addApplication(app)</text>
     <line x1="14" y1="35" x2="446" y2="35" stroke="#43e97b" opacity=".2"/>
 
-    <!-- step boxes -->
     <g transform="translate(16,46)">
-      <rect width="195" height="72" rx="8" fill="#43e97b" opacity=".06" stroke="#43e97b" stroke-width=".8"/>
-      <text x="10" y="16" fill="#43e97b" font-size="10" font-weight="600">User input (Main)</text>
-      <text x="10" y="32" fill="#aab" font-size="10">company = "Google"</text>
-      <text x="10" y="46" fill="#aab" font-size="10">role = "SWE Intern"</text>
-      <text x="10" y="60" fill="#aab" font-size="10">duration = 3, stipend = 3000</text>
+      <rect width="200" height="76" rx="8" fill="#43e97b" opacity=".06" stroke="#43e97b" stroke-width=".8"/>
+      <text x="10" y="16" fill="#43e97b" font-size="10" font-weight="600">Assign ID &amp; RAM Store</text>
+      <text x="10" y="34" fill="#ffa" font-size="10" font-family="Consolas,monospace">app.setApplicationId(</text>
+      <text x="10" y="48" fill="#ffa" font-size="10" font-family="Consolas,monospace">  "APP" + nextId++)</text>
+      <text x="10" y="62" fill="#ffa" font-size="10" font-family="Consolas,monospace">applications.add(app)</text>
     </g>
 
-    <text x="230" y="84" fill="#43e97b" font-size="16">→</text>
+    <text x="230" y="86" fill="#43e97b" font-size="16">→</text>
 
     <g transform="translate(248,46)">
-      <rect width="195" height="72" rx="8" fill="#43e97b" opacity=".06" stroke="#43e97b" stroke-width=".8"/>
-      <text x="10" y="16" fill="#43e97b" font-size="10" font-weight="600">Construct object</text>
-      <text x="10" y="34" fill="#ffa" font-size="10" font-family="Consolas,monospace">new InternshipApplication(</text>
-      <text x="10" y="48" fill="#ffa" font-size="10" font-family="Consolas,monospace">  null, "Google", "SWE",</text>
-      <text x="10" y="62" fill="#ffa" font-size="10" font-family="Consolas,monospace">  APPLIED, 3, 3000)</text>
-    </g>
-
-    <text x="230" y="146" fill="#43e97b" font-size="16">→</text>
-
-    <g transform="translate(16,130)">
-      <rect width="195" height="72" rx="8" fill="#43e97b" opacity=".06" stroke="#43e97b" stroke-width=".8"/>
-      <text x="10" y="16" fill="#43e97b" font-size="10" font-weight="600">Manager assigns ID</text>
-      <text x="10" y="36" fill="#ffa" font-size="10" font-family="Consolas,monospace">app.setApplicationId(</text>
-      <text x="10" y="50" fill="#ffa" font-size="10" font-family="Consolas,monospace">  "APP" + nextId++)</text>
-      <text x="10" y="64" fill="#888" font-size="9">nextId: 1 → 2 → 3 → ...</text>
-    </g>
-
-    <g transform="translate(248,130)">
-      <rect width="195" height="72" rx="8" fill="#43e97b" opacity=".06" stroke="#43e97b" stroke-width=".8"/>
-      <text x="10" y="16" fill="#43e97b" font-size="10" font-weight="600">Store in ArrayList</text>
-      <text x="10" y="36" fill="#ffa" font-size="10" font-family="Consolas,monospace">applications.add(app)</text>
-      <text x="10" y="54" fill="#888" font-size="9">ArrayList&lt;Application&gt;</text>
-      <text x="10" y="66" fill="#888" font-size="9">polymorphic storage</text>
+      <rect width="200" height="76" rx="8" fill="#ffd700" opacity=".06" stroke="#ffd700" stroke-width=".8"/>
+      <text x="10" y="16" fill="#ffd700" font-size="10" font-weight="600">saveToFile()</text>
+      <text x="10" y="34" fill="#aab" font-size="10">Writes entire ArrayList to CSV</text>
+      <text x="10" y="48" fill="#aab" font-size="10">Escapes commas in strings</text>
+      <text x="10" y="62" fill="#888" font-size="9">(Triggers on every add)</text>
     </g>
   </g>
 
   <!-- ═══════ PHASE 2: READ ═══════ -->
   <g transform="translate(530,90)" filter="url(#d4)">
-    <rect width="460" height="220" rx="14" fill="#12122a" stroke="#4facfe" stroke-width="2"/>
+    <rect width="460" height="135" rx="14" fill="#12122a" stroke="#4facfe" stroke-width="2"/>
     <rect width="460" height="30" rx="14" fill="#4facfe" opacity=".1"/>
-    <text x="22" y="21" fill="#4facfe" font-size="13" font-weight="700">②  READ — viewApplications() / searchByCompany()</text>
+    <text x="22" y="21" fill="#4facfe" font-size="13" font-weight="700">②  READ — viewApplications() / search()</text>
     <line x1="14" y1="35" x2="446" y2="35" stroke="#4facfe" opacity=".2"/>
 
-    <!-- view all -->
     <g transform="translate(16,46)">
       <rect width="200" height="76" rx="8" fill="#4facfe" opacity=".06" stroke="#4facfe" stroke-width=".8"/>
       <text x="10" y="16" fill="#4facfe" font-size="10" font-weight="600">viewApplications()</text>
       <text x="10" y="34" fill="#aab" font-size="10">for (app : applications)</text>
       <text x="10" y="48" fill="#aab" font-size="10">→ printf formatted table</text>
       <text x="10" y="62" fill="#888" font-size="9">instanceof check for Type col</text>
-      <text x="10" y="74" fill="#555" font-size="8">ID | Company | Role | Type | Status</text>
     </g>
 
-    <!-- search -->
     <g transform="translate(236,46)">
       <rect width="208" height="76" rx="8" fill="#a18cd1" opacity=".06" stroke="#a18cd1" stroke-width=".8"/>
       <text x="10" y="16" fill="#a18cd1" font-size="10" font-weight="600">searchByCompany(company)</text>
       <text x="10" y="34" fill="#aab" font-size="10">for (app : applications)</text>
-      <text x="10" y="48" fill="#aab" font-size="10">  .getCompany().toLowerCase()</text>
-      <text x="10" y="62" fill="#aab" font-size="10">  .contains(query.toLowerCase())</text>
-      <text x="10" y="74" fill="#888" font-size="9">→ app.displayDetails() [polymorphic]</text>
-    </g>
-
-    <!-- polymorphism callout -->
-    <g transform="translate(16,140)">
-      <rect width="428" height="62" rx="8" fill="#ffd700" opacity=".05" stroke="#ffd700" stroke-width=".8"/>
-      <text x="12" y="18" fill="#ffd700" font-size="11" font-weight="700">✦ Polymorphism in action</text>
-      <text x="12" y="36" fill="#bbb" font-size="10">displayDetails() — same method call, different output depending on type</text>
-      <text x="12" y="52" fill="#bbb" font-size="10">instanceof — used in viewApplications() to determine "Internship" vs "Job"</text>
+      <text x="10" y="48" fill="#aab" font-size="10">  .getCompany().contains()</text>
+      <text x="10" y="62" fill="#888" font-size="9">→ app.displayDetails()</text>
     </g>
   </g>
 
   <!-- ═══════ PHASE 3: UPDATE ═══════ -->
-  <g transform="translate(30,340)" filter="url(#d4)">
-    <rect width="460" height="165" rx="14" fill="#12122a" stroke="#fbc2eb" stroke-width="2"/>
+  <g transform="translate(530,240)" filter="url(#d4)">
+    <rect width="460" height="135" rx="14" fill="#12122a" stroke="#fbc2eb" stroke-width="2"/>
     <rect width="460" height="30" rx="14" fill="#fbc2eb" opacity=".1"/>
     <text x="22" y="21" fill="#fbc2eb" font-size="13" font-weight="700">③  UPDATE — updateStatus(appId, newStatus)</text>
     <line x1="14" y1="35" x2="446" y2="35" stroke="#fbc2eb" opacity=".2"/>
 
     <g transform="translate(16,46)">
-      <rect width="200" height="56" rx="8" fill="#fbc2eb" opacity=".06" stroke="#fbc2eb" stroke-width=".8"/>
-      <text x="10" y="16" fill="#fbc2eb" font-size="10" font-weight="600">Validate status input</text>
-      <text x="10" y="34" fill="#ffa" font-size="10" font-family="Consolas,monospace">Status.valueOf(input)</text>
-      <text x="10" y="48" fill="#888" font-size="9">throws IllegalArgumentException if invalid</text>
-    </g>
-
-    <text x="230" y="76" fill="#fbc2eb" font-size="16">→</text>
-
-    <g transform="translate(248,46)">
-      <rect width="200" height="56" rx="8" fill="#fbc2eb" opacity=".06" stroke="#fbc2eb" stroke-width=".8"/>
-      <text x="10" y="16" fill="#fbc2eb" font-size="10" font-weight="600">Find &amp; update</text>
-      <text x="10" y="34" fill="#aab" font-size="10">Linear scan by app.getApplicationId()</text>
+      <rect width="200" height="76" rx="8" fill="#fbc2eb" opacity=".06" stroke="#fbc2eb" stroke-width=".8"/>
+      <text x="10" y="16" fill="#fbc2eb" font-size="10" font-weight="600">Find &amp; modify RAM</text>
+      <text x="10" y="34" fill="#aab" font-size="10">Linear scan by ID</text>
       <text x="10" y="48" fill="#ffa" font-size="10" font-family="Consolas,monospace">app.setStatus(newStatus)</text>
     </g>
 
-    <g transform="translate(16,116)">
-      <rect width="428" height="34" rx="8" fill="#f5576c" opacity=".06" stroke="#f5576c" stroke-width=".8"/>
-      <text x="12" y="14" fill="#f5576c" font-size="10" font-weight="600">Error paths:</text>
-      <text x="12" y="28" fill="#aab" font-size="10">"Application ID not found." (returns false)  |  "Invalid status." (catch block in Main)</text>
+    <text x="230" y="86" fill="#fbc2eb" font-size="16">→</text>
+
+    <g transform="translate(248,46)">
+      <rect width="200" height="76" rx="8" fill="#ffd700" opacity=".06" stroke="#ffd700" stroke-width=".8"/>
+      <text x="10" y="16" fill="#ffd700" font-size="10" font-weight="600">saveToFile()</text>
+      <text x="10" y="34" fill="#aab" font-size="10">Writes updated state to CSV</text>
+      <text x="10" y="48" fill="#aab" font-size="10">Overwrites entire file</text>
     </g>
   </g>
 
   <!-- ═══════ PHASE 4: DELETE ═══════ -->
-  <g transform="translate(530,340)" filter="url(#d4)">
-    <rect width="460" height="165" rx="14" fill="#12122a" stroke="#f5576c" stroke-width="2"/>
+  <g transform="translate(30,390)" filter="url(#d4)">
+    <rect width="460" height="135" rx="14" fill="#12122a" stroke="#f5576c" stroke-width="2"/>
     <rect width="460" height="30" rx="14" fill="#f5576c" opacity=".1"/>
     <text x="22" y="21" fill="#f5576c" font-size="13" font-weight="700">④  DELETE — deleteApplication(appId)</text>
     <line x1="14" y1="35" x2="446" y2="35" stroke="#f5576c" opacity=".2"/>
 
     <g transform="translate(16,46)">
-      <rect width="200" height="56" rx="8" fill="#f5576c" opacity=".06" stroke="#f5576c" stroke-width=".8"/>
-      <text x="10" y="16" fill="#f5576c" font-size="10" font-weight="600">User confirmation</text>
-      <text x="10" y="34" fill="#aab" font-size="10">"Are you sure? (yes/no)"</text>
-      <text x="10" y="48" fill="#888" font-size="9">Accepts: "yes", "y" (case-insensitive)</text>
-    </g>
-
-    <text x="230" y="76" fill="#f5576c" font-size="16">→</text>
-
-    <g transform="translate(248,46)">
-      <rect width="200" height="56" rx="8" fill="#f5576c" opacity=".06" stroke="#f5576c" stroke-width=".8"/>
-      <text x="10" y="16" fill="#f5576c" font-size="10" font-weight="600">Find &amp; remove</text>
-      <text x="10" y="34" fill="#aab" font-size="10">Index-based loop (for int i)</text>
+      <rect width="200" height="76" rx="8" fill="#f5576c" opacity=".06" stroke="#f5576c" stroke-width=".8"/>
+      <text x="10" y="16" fill="#f5576c" font-size="10" font-weight="600">Find &amp; remove from RAM</text>
+      <text x="10" y="34" fill="#aab" font-size="10">Index-based loop</text>
       <text x="10" y="48" fill="#ffa" font-size="10" font-family="Consolas,monospace">applications.remove(i)</text>
     </g>
 
-    <g transform="translate(16,116)">
-      <rect width="428" height="34" rx="8" fill="#555" opacity=".15" stroke="#555" stroke-width=".8"/>
-      <text x="12" y="14" fill="#aab" font-size="10" font-weight="600">Safety:</text>
-      <text x="12" y="28" fill="#aab" font-size="10">Confirmation prompt prevents accidental deletion  |  "Cancelled." on refusal</text>
+    <text x="230" y="86" fill="#f5576c" font-size="16">→</text>
+
+    <g transform="translate(248,46)">
+      <rect width="200" height="76" rx="8" fill="#ffd700" opacity=".06" stroke="#ffd700" stroke-width=".8"/>
+      <text x="10" y="16" fill="#ffd700" font-size="10" font-weight="600">saveToFile()</text>
+      <text x="10" y="34" fill="#aab" font-size="10">Writes remaining items</text>
+      <text x="10" y="48" fill="#aab" font-size="10">Deleted item is gone</text>
     </g>
   </g>
 
-  <!-- ═══════ DATA STORE VISUAL ═══════ -->
+  <!-- ═══════ DATA STORE VISUAL (DISK) ═══════ -->
   <g transform="translate(150,540)" filter="url(#d4)">
     <rect width="720" height="130" rx="14" fill="#12122a" stroke="#ffd700" stroke-width="2"/>
     <rect width="720" height="30" rx="14" fill="#ffd700" opacity=".08"/>
-    <text x="360" y="21" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="700">ArrayList&lt;Application&gt;  —  In-Memory Data Store</text>
+    <text x="360" y="21" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="700">data.csv  —  Persistent Disk Storage</text>
     <line x1="14" y1="35" x2="706" y2="35" stroke="#ffd700" opacity=".15"/>
 
-    <!-- array slots -->
     <g transform="translate(20,50)">
-      <!-- slot 0 -->
-      <rect width="160" height="66" rx="8" fill="#43e97b" opacity=".08" stroke="#43e97b" stroke-width="1"/>
-      <text x="80" y="16" text-anchor="middle" fill="#43e97b" font-size="10" font-weight="600">APP1 (Internship)</text>
-      <text x="8" y="32" fill="#888" font-size="9">Google · SWE Intern</text>
-      <text x="8" y="44" fill="#888" font-size="9">APPLIED · 3mo · $3000</text>
-      <rect x="100" y="50" width="52" height="14" rx="4" fill="#43e97b" opacity=".2"/>
-      <text x="126" y="61" text-anchor="middle" fill="#43e97b" font-size="8">APPLIED</text>
-
-      <!-- slot 1 -->
-      <g transform="translate(180,0)">
-        <rect width="160" height="66" rx="8" fill="#fa709a" opacity=".08" stroke="#fa709a" stroke-width="1"/>
-        <text x="80" y="16" text-anchor="middle" fill="#fa709a" font-size="10" font-weight="600">APP2 (Job)</text>
-        <text x="8" y="32" fill="#888" font-size="9">Meta · PM</text>
-        <text x="8" y="44" fill="#888" font-size="9">INTERVIEW · $120k · FT</text>
-        <rect x="100" y="50" width="52" height="14" rx="4" fill="#4facfe" opacity=".2"/>
-        <text x="126" y="61" text-anchor="middle" fill="#4facfe" font-size="8">INTERVIEW</text>
-      </g>
-
-      <!-- slot 2 -->
-      <g transform="translate(360,0)">
-        <rect width="160" height="66" rx="8" fill="#43e97b" opacity=".08" stroke="#43e97b" stroke-width="1"/>
-        <text x="80" y="16" text-anchor="middle" fill="#43e97b" font-size="10" font-weight="600">APP3 (Internship)</text>
-        <text x="8" y="32" fill="#888" font-size="9">Amazon · Data Eng</text>
-        <text x="8" y="44" fill="#888" font-size="9">SELECTED · 6mo · $4500</text>
-        <rect x="100" y="50" width="52" height="14" rx="4" fill="#ffd700" opacity=".2"/>
-        <text x="126" y="61" text-anchor="middle" fill="#ffd700" font-size="8">SELECTED</text>
-      </g>
-
-      <!-- ellipsis -->
-      <g transform="translate(540,0)">
-        <rect width="130" height="66" rx="8" fill="#333" opacity=".15" stroke="#555" stroke-width=".8" stroke-dasharray="4 3"/>
-        <text x="65" y="38" text-anchor="middle" fill="#666" font-size="16">· · ·</text>
-        <text x="65" y="56" text-anchor="middle" fill="#555" font-size="9">index n</text>
-      </g>
+      <rect width="680" height="66" rx="6" fill="#111" stroke="#333" stroke-width="1"/>
+      <text x="10" y="16" fill="#666" font-size="11" font-family="Consolas,monospace">TYPE,ID,COMPANY,ROLE,STATUS,EXTRA1,EXTRA2</text>
+      <text x="10" y="34" fill="#43e97b" font-size="11" font-family="Consolas,monospace">INTERNSHIP,APP1,Google,SWE Intern,APPLIED,3,3000.0</text>
+      <text x="10" y="52" fill="#4facfe" font-size="11" font-family="Consolas,monospace">JOB,APP2,Meta,Product Manager,INTERVIEW,120000.0,Full-time</text>
+      
+      <!-- Callouts -->
+      <path d="M 10 37 Q -10 37 -10 18 Q -10 0 10 0" fill="none" stroke="#43e97b" stroke-width="1" opacity=".5"/>
+      <path d="M 10 55 Q -25 55 -25 36 Q -25 18 10 18" fill="none" stroke="#4facfe" stroke-width="1" opacity=".5"/>
+      <text x="-32" y="32" fill="#aaa" font-size="8" text-anchor="end">Subclass maps</text>
+      <text x="-32" y="44" fill="#aaa" font-size="8" text-anchor="end">to specific CSV row</text>
     </g>
   </g>
-
-  <!-- note -->
-  <text x="510" y="688" text-anchor="middle" fill="#555" font-size="10">⚠  All data lives in memory — lost when the application exits (no persistence layer)</text>
 </svg>
