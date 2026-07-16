@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 720" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2=".6" y2="1">
+      <stop offset="0%" stop-color="#0b0b1e"/>
+      <stop offset="100%" stop-color="#161638"/>
+    </linearGradient>
+    <filter id="ds"><feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#000" flood-opacity=".45"/></filter>
+    <filter id="gl"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <!-- reusable pill for section headers -->
+    <linearGradient id="gEnum" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f857a6"/><stop offset="100%" stop-color="#ff5858"/></linearGradient>
+    <linearGradient id="gAbs"  x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4facfe"/><stop offset="100%" stop-color="#00f2fe"/></linearGradient>
+    <linearGradient id="gInt"  x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#43e97b"/><stop offset="100%" stop-color="#38f9d7"/></linearGradient>
+    <linearGradient id="gJob"  x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#fa709a"/><stop offset="100%" stop-color="#fee140"/></linearGradient>
+    <linearGradient id="gMgr"  x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a18cd1"/><stop offset="100%" stop-color="#fbc2eb"/></linearGradient>
+    <linearGradient id="gMain" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffecd2"/><stop offset="100%" stop-color="#fcb69f"/></linearGradient>
+  </defs>
+
+  <rect width="1020" height="720" fill="url(#bg)" rx="18"/>
+
+  <!-- title -->
+  <text x="510" y="42" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" letter-spacing="1" filter="url(#gl)">UML Class Diagram</text>
+  <text x="510" y="66" text-anchor="middle" fill="#667" font-size="13">Internship &amp; Job Application Tracker  ·  6 source files  ·  4 OOP pillars</text>
+
+  <!-- ======================== STATUS ENUM ======================== -->
+  <g transform="translate(40,100)" filter="url(#ds)">
+    <rect width="200" height="158" rx="14" fill="#12122a" stroke="#f857a6" stroke-width="2"/>
+    <!-- header -->
+    <rect width="200" height="34" rx="14" fill="url(#gEnum)" opacity=".18"/>
+    <text x="100" y="15" text-anchor="middle" fill="#f857a6" font-size="10" font-weight="600" letter-spacing="2">«ENUM»</text>
+    <text x="100" y="30" text-anchor="middle" fill="#fca" font-size="14" font-weight="700">Status</text>
+    <line x1="14" y1="40" x2="186" y2="40" stroke="#f857a6" opacity=".25"/>
+    <!-- values -->
+    <circle cx="26" cy="60" r="5" fill="#43e97b"/><text x="38" y="64" fill="#ccc" font-size="12">APPLIED</text>
+    <circle cx="26" cy="82" r="5" fill="#4facfe"/><text x="38" y="86" fill="#ccc" font-size="12">INTERVIEW</text>
+    <circle cx="26" cy="104" r="5" fill="#ffd700"/><text x="38" y="108" fill="#ccc" font-size="12">SELECTED</text>
+    <circle cx="26" cy="126" r="5" fill="#f5576c"/><text x="38" y="130" fill="#ccc" font-size="12">REJECTED</text>
+    <text x="100" y="152" text-anchor="middle" fill="#555" font-size="9">Status.java  ·  7 lines</text>
+  </g>
+
+  <!-- ======================== APPLICATION (ABSTRACT) ======================== -->
+  <g transform="translate(320,90)" filter="url(#ds)">
+    <rect width="380" height="235" rx="14" fill="#12122a" stroke="#4facfe" stroke-width="2"/>
+    <rect width="380" height="34" rx="14" fill="url(#gAbs)" opacity=".15"/>
+    <text x="190" y="15" text-anchor="middle" fill="#4facfe" font-size="10" font-weight="600" letter-spacing="2">«ABSTRACT»</text>
+    <text x="190" y="30" text-anchor="middle" fill="#8ee" font-size="15" font-weight="700">Application</text>
+    <line x1="16" y1="42" x2="364" y2="42" stroke="#4facfe" opacity=".25"/>
+    <!-- fields -->
+    <text x="20" y="62" fill="#e8a" font-size="11">— applicationId : String</text>
+    <text x="20" y="78" fill="#e8a" font-size="11">— company : String</text>
+    <text x="20" y="94" fill="#e8a" font-size="11">— role : String</text>
+    <text x="20" y="110" fill="#e8a" font-size="11">— status : Status</text>
+    <line x1="16" y1="120" x2="364" y2="120" stroke="#4facfe" opacity=".2"/>
+    <!-- constructor -->
+    <text x="20" y="140" fill="#bbb" font-size="11">+ Application(id, company, role, status)</text>
+    <line x1="16" y1="150" x2="364" y2="150" stroke="#4facfe" opacity=".15"/>
+    <!-- methods -->
+    <text x="20" y="168" fill="#8cc" font-size="11">+ getApplicationId() / setApplicationId()</text>
+    <text x="20" y="184" fill="#8cc" font-size="11">+ getCompany() / setCompany()</text>
+    <text x="20" y="200" fill="#8cc" font-size="11">+ getRole() / setRole()</text>
+    <text x="20" y="216" fill="#8cc" font-size="11">+ getStatus() / setStatus()</text>
+    <text x="20" y="232" fill="#ffa" font-size="11" font-style="italic">+ displayDetails()  «abstract»</text>
+  </g>
+
+  <!-- dependency arrow Application ──▸ Status -->
+  <line x1="320" y1="178" x2="240" y2="178" stroke="#f857a6" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <polygon points="244,174 236,178 244,182" fill="#f857a6"/>
+  <text x="265" y="172" fill="#f857a6" font-size="9">uses</text>
+
+  <!-- ======================== INTERNSHIP APPLICATION ======================== -->
+  <g transform="translate(100,430)" filter="url(#ds)">
+    <rect width="360" height="225" rx="14" fill="#12122a" stroke="#43e97b" stroke-width="2"/>
+    <rect width="360" height="34" rx="14" fill="url(#gInt)" opacity=".14"/>
+    <text x="180" y="23" text-anchor="middle" fill="#43e97b" font-size="15" font-weight="700">InternshipApplication</text>
+    <line x1="14" y1="40" x2="346" y2="40" stroke="#43e97b" opacity=".25"/>
+    <text x="18" y="60" fill="#e8a" font-size="11">— duration : int  <tspan fill="#666">(months)</tspan></text>
+    <text x="18" y="76" fill="#e8a" font-size="11">— stipend : double  <tspan fill="#666">($)</tspan></text>
+    <line x1="14" y1="86" x2="346" y2="86" stroke="#43e97b" opacity=".2"/>
+    <text x="18" y="106" fill="#bbb" font-size="11">+ InternshipApplication(id, co, role, status,</text>
+    <text x="38" y="120" fill="#bbb" font-size="11">duration, stipend)</text>
+    <line x1="14" y1="130" x2="346" y2="130" stroke="#43e97b" opacity=".15"/>
+    <text x="18" y="150" fill="#8cc" font-size="11">+ getDuration() / setDuration()</text>
+    <text x="18" y="166" fill="#8cc" font-size="11">+ getStipend() / setStipend()</text>
+    <text x="18" y="186" fill="#43e97b" font-size="11" font-weight="600">+ displayDetails()  ✓ override</text>
+    <line x1="14" y1="196" x2="346" y2="196" stroke="#43e97b" opacity=".12"/>
+    <text x="18" y="214" fill="#555" font-size="9">InternshipApplication.java  ·  27 lines</text>
+    <text x="18" y="224" fill="#555" font-size="9">Prints: type, id, company, role, status, duration, stipend</text>
+  </g>
+
+  <!-- ======================== JOB APPLICATION ======================== -->
+  <g transform="translate(560,430)" filter="url(#ds)">
+    <rect width="360" height="225" rx="14" fill="#12122a" stroke="#fa709a" stroke-width="2"/>
+    <rect width="360" height="34" rx="14" fill="url(#gJob)" opacity=".14"/>
+    <text x="180" y="23" text-anchor="middle" fill="#fa709a" font-size="15" font-weight="700">JobApplication</text>
+    <line x1="14" y1="40" x2="346" y2="40" stroke="#fa709a" opacity=".25"/>
+    <text x="18" y="60" fill="#e8a" font-size="11">— salary : double  <tspan fill="#666">($)</tspan></text>
+    <text x="18" y="76" fill="#e8a" font-size="11">— jobType : String  <tspan fill="#666">(Full-time / Part-time / Contract)</tspan></text>
+    <line x1="14" y1="86" x2="346" y2="86" stroke="#fa709a" opacity=".2"/>
+    <text x="18" y="106" fill="#bbb" font-size="11">+ JobApplication(id, co, role, status,</text>
+    <text x="38" y="120" fill="#bbb" font-size="11">salary, jobType)</text>
+    <line x1="14" y1="130" x2="346" y2="130" stroke="#fa709a" opacity=".15"/>
+    <text x="18" y="150" fill="#8cc" font-size="11">+ getSalary() / setSalary()</text>
+    <text x="18" y="166" fill="#8cc" font-size="11">+ getJobType() / setJobType()</text>
+    <text x="18" y="186" fill="#fa709a" font-size="11" font-weight="600">+ displayDetails()  ✓ override</text>
+    <line x1="14" y1="196" x2="346" y2="196" stroke="#fa709a" opacity=".12"/>
+    <text x="18" y="214" fill="#555" font-size="9">JobApplication.java  ·  27 lines</text>
+    <text x="18" y="224" fill="#555" font-size="9">Prints: type, id, company, role, status, salary, jobType</text>
+  </g>
+
+  <!-- inheritance arrows  ──▷ (hollow triangle) -->
+  <!-- Internship → Application -->
+  <line x1="280" y1="430" x2="440" y2="325" stroke="#4facfe" stroke-width="2.2" stroke-dasharray="8 4"/>
+  <polygon points="436,320 448,318 440,328" fill="none" stroke="#4facfe" stroke-width="2"/>
+  <text x="330" y="370" fill="#4facfe" font-size="10" font-weight="600">extends</text>
+
+  <!-- Job → Application -->
+  <line x1="740" y1="430" x2="580" y2="325" stroke="#4facfe" stroke-width="2.2" stroke-dasharray="8 4"/>
+  <polygon points="576,320 588,318 580,328" fill="none" stroke="#4facfe" stroke-width="2"/>
+  <text x="670" y="370" fill="#4facfe" font-size="10" font-weight="600">extends</text>
+
+  <!-- ======================== LEGEND ======================== -->
+  <g transform="translate(760,100)" filter="url(#ds)">
+    <rect width="220" height="175" rx="12" fill="#12122a" stroke="#444" stroke-width="1.2"/>
+    <rect width="220" height="28" rx="12" fill="#fff" opacity=".04"/>
+    <text x="110" y="20" text-anchor="middle" fill="#aaa" font-size="12" font-weight="700">Legend</text>
+    <line x1="10" y1="32" x2="210" y2="32" stroke="#333"/>
+    <!-- items -->
+    <rect x="14" y="42" width="14" height="14" rx="3" fill="url(#gAbs)" opacity=".5"/>
+    <text x="36" y="54" fill="#bbb" font-size="11">Abstract class</text>
+    <rect x="14" y="66" width="14" height="14" rx="3" fill="url(#gInt)" opacity=".5"/>
+    <text x="36" y="78" fill="#bbb" font-size="11">Concrete subclass</text>
+    <rect x="14" y="90" width="14" height="14" rx="3" fill="url(#gEnum)" opacity=".5"/>
+    <text x="36" y="102" fill="#bbb" font-size="11">Enum type</text>
+    <line x1="14" y1="120" x2="50" y2="120" stroke="#4facfe" stroke-width="2" stroke-dasharray="6 3"/>
+    <polygon points="46,116 54,120 46,124" fill="none" stroke="#4facfe" stroke-width="1.5"/>
+    <text x="62" y="124" fill="#bbb" font-size="11">extends (inherits)</text>
+    <line x1="14" y1="144" x2="50" y2="144" stroke="#f857a6" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <polygon points="46,140 54,144 46,148" fill="#f857a6"/>
+    <text x="62" y="148" fill="#bbb" font-size="11">dependency (uses)</text>
+  </g>
+
+  <!-- ======================== OOP PILLARS ======================== -->
+  <g transform="translate(760,290)" filter="url(#ds)">
+    <rect width="220" height="120" rx="12" fill="#12122a" stroke="#ffd700" stroke-width="1.2" opacity=".9"/>
+    <rect width="220" height="28" rx="12" fill="#ffd700" opacity=".06"/>
+    <text x="110" y="20" text-anchor="middle" fill="#ffd700" font-size="12" font-weight="700">OOP Pillars Used</text>
+    <line x1="10" y1="32" x2="210" y2="32" stroke="#ffd700" opacity=".15"/>
+    <text x="18" y="52" fill="#4facfe" font-size="12">▸ Abstraction</text>
+    <text x="130" y="52" fill="#555" font-size="9">abstract class + method</text>
+    <text x="18" y="72" fill="#43e97b" font-size="12">▸ Inheritance</text>
+    <text x="130" y="72" fill="#555" font-size="9">extends Application</text>
+    <text x="18" y="92" fill="#fa709a" font-size="12">▸ Polymorphism</text>
+    <text x="130" y="92" fill="#555" font-size="9">displayDetails() override</text>
+    <text x="18" y="112" fill="#ffecd2" font-size="12">▸ Encapsulation</text>
+    <text x="130" y="112" fill="#555" font-size="9">private fields + getters</text>
+  </g>
+</svg>

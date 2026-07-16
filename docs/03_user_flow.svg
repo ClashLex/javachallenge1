@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 860" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0%" stop-color="#0a0a1f"/>
+      <stop offset="100%" stop-color="#151535"/>
+    </linearGradient>
+    <filter id="d3"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity=".42"/></filter>
+    <filter id="g3"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="f1" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,9 3,0 6" fill="#4facfe"/></marker>
+    <marker id="f2" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,9 3,0 6" fill="#43e97b"/></marker>
+    <marker id="f3" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,9 3,0 6" fill="#ffecd2"/></marker>
+    <marker id="f4" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,9 3,0 6" fill="#f5576c"/></marker>
+    <marker id="f5" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,9 3,0 6" fill="#a18cd1"/></marker>
+  </defs>
+
+  <rect width="1020" height="860" fill="url(#bg3)" rx="18"/>
+
+  <text x="510" y="42" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" letter-spacing="1" filter="url(#g3)">Application Lifecycle &amp; User Flow</text>
+  <text x="510" y="66" text-anchor="middle" fill="#667" font-size="13">Complete flowchart: launch → menu loop → CRUD operations → exit</text>
+
+  <!-- ═══════ START ═══════ -->
+  <g transform="translate(410,85)" filter="url(#d3)">
+    <rect width="200" height="44" rx="22" fill="#12122a" stroke="#43e97b" stroke-width="2.5"/>
+    <text x="100" y="28" text-anchor="middle" fill="#43e97b" font-size="15" font-weight="800">▶  java Main</text>
+  </g>
+
+  <!-- arrow down -->
+  <line x1="510" y1="129" x2="510" y2="155" stroke="#43e97b" stroke-width="2" marker-end="url(#f2)"/>
+
+  <!-- ═══════ BANNER ═══════ -->
+  <g transform="translate(380,158)" filter="url(#d3)">
+    <rect width="260" height="38" rx="10" fill="#12122a" stroke="#ffecd2" stroke-width="1.5"/>
+    <text x="130" y="24" text-anchor="middle" fill="#ffecd2" font-size="12">Print welcome banner</text>
+  </g>
+
+  <line x1="510" y1="196" x2="510" y2="222" stroke="#ffecd2" stroke-width="1.8" marker-end="url(#f3)"/>
+
+  <!-- ═══════ MENU ═══════ -->
+  <g transform="translate(355,225)" filter="url(#d3)">
+    <rect width="310" height="52" rx="12" fill="#12122a" stroke="#ffecd2" stroke-width="2"/>
+    <text x="155" y="22" text-anchor="middle" fill="#ffecd2" font-size="14" font-weight="700">📋  printMenu()</text>
+    <text x="155" y="42" text-anchor="middle" fill="#777" font-size="10">Display 7 options → "Choose option: _"</text>
+  </g>
+
+  <line x1="510" y1="277" x2="510" y2="310" stroke="#4facfe" stroke-width="1.8" marker-end="url(#f1)"/>
+
+  <!-- ═══════ DECISION DIAMOND ═══════ -->
+  <g transform="translate(420,310)">
+    <polygon points="90,0 180,55 90,110 0,55" fill="#12122a" stroke="#4facfe" stroke-width="2.2" filter="url(#d3)"/>
+    <text x="90" y="50" text-anchor="middle" fill="#4facfe" font-size="13" font-weight="700">switch</text>
+    <text x="90" y="68" text-anchor="middle" fill="#4facfe" font-size="13" font-weight="700">(choice)</text>
+  </g>
+
+  <!-- ═══════ OPTION 1: ADD INTERNSHIP ═══════ -->
+  <line x1="420" y1="340" x2="170" y2="340" stroke="#43e97b" stroke-width="1.8" marker-end="url(#f2)"/>
+  <text x="290" y="333" fill="#43e97b" font-size="10" font-weight="700">case 1</text>
+
+  <g transform="translate(30,310)" filter="url(#d3)">
+    <rect width="140" height="105" rx="10" fill="#12122a" stroke="#43e97b" stroke-width="1.8"/>
+    <rect width="140" height="24" rx="10" fill="#43e97b" opacity=".14"/>
+    <text x="70" y="17" text-anchor="middle" fill="#43e97b" font-size="11" font-weight="700">Add Internship</text>
+    <text x="10" y="40" fill="#999" font-size="9">→ getInput("Company")</text>
+    <text x="10" y="53" fill="#999" font-size="9">→ getInput("Role")</text>
+    <text x="10" y="66" fill="#999" font-size="9">→ getIntInput("Duration")</text>
+    <text x="10" y="79" fill="#999" font-size="9">→ getDoubleInput("Stipend")</text>
+    <text x="10" y="98" fill="#43e97b" font-size="9" font-weight="600">→ new InternshipApplication()</text>
+  </g>
+
+  <!-- ═══════ OPTION 2: ADD JOB ═══════ -->
+  <line x1="420" y1="365" x2="170" y2="450" stroke="#38f9d7" stroke-width="1.8" marker-end="url(#f2)"/>
+  <text x="260" y="406" fill="#38f9d7" font-size="10" font-weight="700">case 2</text>
+
+  <g transform="translate(30,440)" filter="url(#d3)">
+    <rect width="140" height="105" rx="10" fill="#12122a" stroke="#38f9d7" stroke-width="1.8"/>
+    <rect width="140" height="24" rx="10" fill="#38f9d7" opacity=".14"/>
+    <text x="70" y="17" text-anchor="middle" fill="#38f9d7" font-size="11" font-weight="700">Add Job</text>
+    <text x="10" y="40" fill="#999" font-size="9">→ getInput("Company")</text>
+    <text x="10" y="53" fill="#999" font-size="9">→ getInput("Role")</text>
+    <text x="10" y="66" fill="#999" font-size="9">→ getDoubleInput("Salary")</text>
+    <text x="10" y="79" fill="#999" font-size="9">→ getInput("Job Type")</text>
+    <text x="10" y="98" fill="#38f9d7" font-size="9" font-weight="600">→ new JobApplication()</text>
+  </g>
+
+  <!-- ═══════ OPTION 3: VIEW ALL ═══════ -->
+  <line x1="510" y1="420" x2="510" y2="470" stroke="#4facfe" stroke-width="1.8" marker-end="url(#f1)"/>
+  <text x="518" y="448" fill="#4facfe" font-size="10" font-weight="700">case 3</text>
+
+  <g transform="translate(430,473)" filter="url(#d3)">
+    <rect width="160" height="58" rx="10" fill="#12122a" stroke="#4facfe" stroke-width="1.8"/>
+    <rect width="160" height="24" rx="10" fill="#4facfe" opacity=".14"/>
+    <text x="80" y="17" text-anchor="middle" fill="#4facfe" font-size="11" font-weight="700">View All</text>
+    <text x="10" y="40" fill="#999" font-size="9">→ viewApplications()</text>
+    <text x="10" y="52" fill="#555" font-size="8">Table: ID | Company | Role | Type | Status</text>
+  </g>
+
+  <!-- ═══════ OPTION 4: SEARCH ═══════ -->
+  <line x1="600" y1="365" x2="700" y2="478" stroke="#a18cd1" stroke-width="1.8" marker-end="url(#f5)"/>
+  <text x="660" y="418" fill="#a18cd1" font-size="10" font-weight="700">case 4</text>
+
+  <g transform="translate(700,468)" filter="url(#d3)">
+    <rect width="170" height="68" rx="10" fill="#12122a" stroke="#a18cd1" stroke-width="1.8"/>
+    <rect width="170" height="24" rx="10" fill="#a18cd1" opacity=".14"/>
+    <text x="85" y="17" text-anchor="middle" fill="#a18cd1" font-size="11" font-weight="700">Search by Company</text>
+    <text x="10" y="40" fill="#999" font-size="9">→ getInput("Company name")</text>
+    <text x="10" y="56" fill="#999" font-size="9">→ searchByCompany(str)</text>
+    <text x="10" y="64" fill="#555" font-size="8">case-insensitive .contains()</text>
+  </g>
+
+  <!-- ═══════ OPTION 5: UPDATE ═══════ -->
+  <line x1="600" y1="340" x2="850" y2="340" stroke="#fbc2eb" stroke-width="1.8" marker-end="url(#f5)"/>
+  <text x="730" y="333" fill="#fbc2eb" font-size="10" font-weight="700">case 5</text>
+
+  <g transform="translate(850,310)" filter="url(#d3)">
+    <rect width="148" height="98" rx="10" fill="#12122a" stroke="#fbc2eb" stroke-width="1.8"/>
+    <rect width="148" height="24" rx="10" fill="#fbc2eb" opacity=".14"/>
+    <text x="74" y="17" text-anchor="middle" fill="#fbc2eb" font-size="11" font-weight="700">Update Status</text>
+    <text x="10" y="40" fill="#999" font-size="9">→ getInput("App ID")</text>
+    <text x="10" y="53" fill="#999" font-size="9">→ getInput("New status")</text>
+    <text x="10" y="68" fill="#999" font-size="9">→ Status.valueOf()</text>
+    <text x="10" y="83" fill="#fbc2eb" font-size="9" font-weight="600">→ updateStatus(id, s)</text>
+    <text x="10" y="94" fill="#555" font-size="8">try-catch for invalid enum</text>
+  </g>
+
+  <!-- ═══════ OPTION 6: DELETE ═══════ -->
+  <line x1="600" y1="365" x2="850" y2="430" stroke="#f5576c" stroke-width="1.8" marker-end="url(#f4)"/>
+  <text x="738" y="395" fill="#f5576c" font-size="10" font-weight="700">case 6</text>
+
+  <g transform="translate(850,425)" filter="url(#d3)">
+    <rect width="148" height="82" rx="10" fill="#12122a" stroke="#f5576c" stroke-width="1.8"/>
+    <rect width="148" height="24" rx="10" fill="#f5576c" opacity=".14"/>
+    <text x="74" y="17" text-anchor="middle" fill="#f5576c" font-size="11" font-weight="700">Delete</text>
+    <text x="10" y="40" fill="#999" font-size="9">→ getInput("App ID")</text>
+    <text x="10" y="53" fill="#999" font-size="9">→ "Are you sure? (yes/no)"</text>
+    <text x="10" y="68" fill="#f5576c" font-size="9" font-weight="600">→ deleteApplication(id)</text>
+    <text x="10" y="78" fill="#555" font-size="8">Skips if not confirmed</text>
+  </g>
+
+  <!-- ═══════ OPTION 7: EXIT ═══════ -->
+  <line x1="600" y1="390" x2="850" y2="540" stroke="#f5576c" stroke-width="1.8" stroke-dasharray="6 3" marker-end="url(#f4)"/>
+  <text x="740" y="475" fill="#f5576c" font-size="10" font-weight="700">case 7</text>
+
+  <g transform="translate(850,530)" filter="url(#d3)">
+    <rect width="148" height="40" rx="20" fill="#12122a" stroke="#f5576c" stroke-width="2.5"/>
+    <text x="74" y="26" text-anchor="middle" fill="#f5576c" font-size="14" font-weight="800">■  Exit</text>
+  </g>
+
+  <!-- ═══════ LOOP-BACK ARROW ═══════ -->
+  <path d="M 100 560 Q 60 620 60 660 Q 60 700 300 700 Q 510 700 510 610 L 510 277" fill="none" stroke="#ffecd2" stroke-width="2.5" stroke-dasharray="10 5" marker-end="url(#f3)"/>
+  <g transform="translate(170,690)">
+    <rect width="250" height="22" rx="6" fill="#ffecd2" opacity=".08" stroke="#ffecd2" stroke-width=".8"/>
+    <text x="125" y="15" text-anchor="middle" fill="#ffecd2" font-size="10" font-weight="600">↩  while (choice != 7) — loop back to menu</text>
+  </g>
+
+  <!-- ═══════ ADD APPLICATION SHARED PATH ═══════ -->
+  <g transform="translate(200,595)" filter="url(#d3)">
+    <rect width="340" height="62" rx="10" fill="#12122a" stroke="#a18cd1" stroke-width="1.5"/>
+    <rect width="340" height="22" rx="10" fill="#a18cd1" opacity=".1"/>
+    <text x="170" y="16" text-anchor="middle" fill="#a18cd1" font-size="11" font-weight="700">Shared: manager.addApplication(app)</text>
+    <line x1="10" y1="26" x2="330" y2="26" stroke="#a18cd1" opacity=".15"/>
+    <text x="14" y="42" fill="#aab" font-size="10">1. app.setApplicationId("APP" + nextId++)  — auto-assigns ID</text>
+    <text x="14" y="56" fill="#aab" font-size="10">2. applications.add(app)  — stores in ArrayList</text>
+  </g>
+
+  <!-- arrows from Add Internship/Job to shared -->
+  <line x1="100" y1="415" x2="280" y2="595" stroke="#a18cd1" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <line x1="100" y1="545" x2="280" y2="595" stroke="#a18cd1" stroke-width="1.4" stroke-dasharray="4 3"/>
+
+  <!-- ═══════ STATUS TRANSITIONS ═══════ -->
+  <g transform="translate(610,595)" filter="url(#d3)">
+    <rect width="260" height="100" rx="10" fill="#12122a" stroke="#ffd700" stroke-width="1.5"/>
+    <rect width="260" height="22" rx="10" fill="#ffd700" opacity=".08"/>
+    <text x="130" y="16" text-anchor="middle" fill="#ffd700" font-size="11" font-weight="700">Status Transitions</text>
+    <line x1="10" y1="26" x2="250" y2="26" stroke="#ffd700" opacity=".15"/>
+    <!-- row 1 -->
+    <rect x="14" y="36" width="64" height="18" rx="5" fill="#43e97b" opacity=".2" stroke="#43e97b" stroke-width=".8"/>
+    <text x="46" y="49" text-anchor="middle" fill="#43e97b" font-size="9" font-weight="600">APPLIED</text>
+    <text x="88" y="49" fill="#555" font-size="12">→</text>
+    <rect x="100" y="36" width="72" height="18" rx="5" fill="#4facfe" opacity=".2" stroke="#4facfe" stroke-width=".8"/>
+    <text x="136" y="49" text-anchor="middle" fill="#4facfe" font-size="9" font-weight="600">INTERVIEW</text>
+    <!-- row 2 -->
+    <text x="50" y="72" fill="#555" font-size="9">↓</text>
+    <text x="140" y="72" fill="#555" font-size="9">↓</text>
+    <rect x="14" y="78" width="72" height="18" rx="5" fill="#f5576c" opacity=".2" stroke="#f5576c" stroke-width=".8"/>
+    <text x="50" y="91" text-anchor="middle" fill="#f5576c" font-size="9" font-weight="600">REJECTED</text>
+    <rect x="100" y="78" width="72" height="18" rx="5" fill="#ffd700" opacity=".2" stroke="#ffd700" stroke-width=".8"/>
+    <text x="136" y="91" text-anchor="middle" fill="#ffd700" font-size="9" font-weight="600">SELECTED</text>
+    <text x="200" y="70" fill="#555" font-size="8">(any → any</text>
+    <text x="200" y="82" fill="#555" font-size="8"> is allowed)</text>
+  </g>
+
+  <!-- ═══════ INPUT VALIDATION ═══════ -->
+  <g transform="translate(610,710)" filter="url(#d3)">
+    <rect width="260" height="80" rx="10" fill="#12122a" stroke="#667eea" stroke-width="1.5"/>
+    <rect width="260" height="22" rx="10" fill="#667eea" opacity=".08"/>
+    <text x="130" y="16" text-anchor="middle" fill="#667eea" font-size="11" font-weight="700">Input Validation (Main)</text>
+    <line x1="10" y1="26" x2="250" y2="26" stroke="#667eea" opacity=".15"/>
+    <text x="14" y="44" fill="#aab" font-size="10">getInput()       — rejects empty strings</text>
+    <text x="14" y="60" fill="#aab" font-size="10">getIntInput()    — parseInt + retry loop</text>
+    <text x="14" y="76" fill="#aab" font-size="10">getDoubleInput() — parseDouble + retry loop</text>
+  </g>
+</svg>
